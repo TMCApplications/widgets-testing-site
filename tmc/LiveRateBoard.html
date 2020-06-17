@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TravelMoneyClub.co.uk">
+    <title>TravelMoneyClub</title>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/europa_font.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <br />
+
+    <div class="flex mb-4">
+        <div class="sm:invisible md:w-1/3"></div>
+        <div class="sm:w-full md:w-1/3">
+            <div id="RateBoard"></div>
+        </div>
+        <div class="sm:invisible md:w-1/3"></div>
+    </div>
+
+    <script src="../assets/js/snippet.js"></script>
+    <script defer>w3.includeHTML()</script>
+</body>
+<script>
+    window.addEventListener('SPENDOLOGY_WIDGETS_LOADED', function() {
+        var options = {
+            selector: "#RateBoard",
+            api_url: 'https://api-test.nonprod.travelmoneyclub.co.uk',
+            button_url: 'https://www.travelmoneyclub.co.uk/instant-quote',
+
+            // Optional (with defaults)
+            // refresh_interval: 5000,
+            // visible_rows: 4,
+            // heading_text: 'Live Rates',
+            // button_text: "Get an instant quote",
+            // error_text: 'Whoops! Something went wrong please contact us for help or click the retry button below.',
+
+            // TMC
+            // banner_visible: true,
+            // banner_link: "http://",
+            // banner_text: "Go premium for even better rates",
+            // suspended_currency_text: 'This currency is temporarily unavailable.',
+        };
+        SPENDOLOGY.LiveRateBoard.new(options).render();
+    });
+</script>
+</html>

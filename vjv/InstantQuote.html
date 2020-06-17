@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TravelMoneyClub.co.uk">
+    <title>Jules Verne</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script type="application/javascript">
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+    </script>
+</head>
+
+<body>
+<br />
+
+<div class="flex mb-4">
+    <div class="sm:invisible md:w-1/3"></div>
+    <div class="sm:w-full md:w-1/3">
+        <div id="InstantQuote" />
+    </div>
+    <div class="sm:invisible md:w-1/3"></div>
+</div>
+
+<div w3-include-html="html/sprites.html" style="display:none;"></div>
+<script src="../assets/js/snippet.js"></script>
+<script defer>w3.includeHTML()</script>
+</body>
+<script>
+    window.addEventListener('SPENDOLOGY_WIDGETS_LOADED', function() {
+        var currency = getURLParameter('currency');
+        var destination = getURLParameter('destination');
+        var departure = getURLParameter('departure');
+        var spend = getURLParameter('spend');
+
+        if (!spend) {
+            spend = getURLParameter('amount')
+        }
+
+        var options = {
+            selector: "#InstantQuote",
+            api_url: 'https://api-test.vjv-nonprod.spendology.cloud',
+            button_url: 'https://app-test.vjv-nonprod.spendology.cloud',
+            button_text: 'Buy now',
+            delivery_text: "*We charge £4.99 for delivery. ",
+            heading_text: 'Buy your travel currency here, order online and get it delivered straight to your door quickly and safely.',
+            footer_text: "We take your privacy very seriously and promise never to share this data with third " +
+                "parties without your consent. Take a look at our " +
+                "<a href=\"http://www.example.com\">privacy policy</a> for more information." +
+                "<br /><br />" +
+                "Please note that we always round the foreign currency to the lowest available denomination. The " +
+                "exchange rate shown is constantly updated with the latest market data so costs may go up and down.",
+
+            // Optional (with defaults)
+            // capture_travel_information: false,
+            // heading_text: 'Get an Instant Quote',
+            // button_text: 'Get it now!',
+            // min_gbp: 100,
+            // max_gbp: 2500,
+            // error_message: 'Whoops! Something went wrong please contact us for help or click the retry button below.',
+            // saving_text: "",
+            // example:
+            // saving_text: "Spending £{cost} at {target_currency_symbol}{rate} you will save £{saving_amount}. If you bought the same amount of " +
+            //       "{target_currency_code} from {competitor_name} it would cost you £{competitor_cost} at their " +
+            //       "rate of {target_currency_symbol}{competitor_rate}.",
+            // onSubmit: function(callback) {
+            //     callback()
+            // },
+
+            // TMC
+            // banner_visible: true,
+            // banner_link: "http://",
+            // banner_text: "Go premium for even better rates",
+        };
+
+        SPENDOLOGY.InstantQuote.new(options).render({
+            selected_currency: currency ? currency : 'EUR',
+            selected_destination: destination ? destination : null,
+            selected_departure: departure ? departure : null,
+            spend: spend ? spend : 750
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Europa';
+    src: url(../fonts/europa/eot/EuropaRegular.eot?) format('embedded-opentype'),
+    url(../fonts/europa/woff/EuropaRegular.woff) format('woff'),
+    url(../fonts/europa/ttf/EuropaRegular.ttf) format('truetype'),
+    url(../fonts/europa/otf/EuropaRegular.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Europa';
+    src: url(../fonts/europa/eot/EuropaRegularItalic.eot?) format('embedded-opentype'),
+    url(../fonts/europa/woff/EuropaRegularItalic.woff) format('woff'),
+    url(../fonts/europa/ttf/EuropaRegularItalic.ttf) format('truetype'),
+    url(../fonts/europa/otf/EuropaRegularItalic.otf) format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
