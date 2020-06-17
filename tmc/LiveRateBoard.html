@@ -31,20 +31,9 @@
         var options = {
             selector: "#RateBoard",
             api_url: 'https://api-test.nonprod.travelmoneyclub.co.uk',
-            button_url: 'https://www.travelmoneyclub.co.uk/instant-quote',
-
-            // Optional (with defaults)
-            // refresh_interval: 5000,
-            // visible_rows: 4,
-            // heading_text: 'Live Rates',
-            // button_text: "Get an instant quote",
-            // error_text: 'Whoops! Something went wrong please contact us for help or click the retry button below.',
-
-            // TMC
-            // banner_visible: true,
-            // banner_link: "http://",
-            // banner_text: "Go premium for even better rates",
-            // suspended_currency_text: 'This currency is temporarily unavailable.',
+            banner_visible: true,
+            banner_link: "https://www.travelmoneyclub.co.uk/go-premium/",
+            banner_text: "Go premium for even better rates",
         };
         SPENDOLOGY.LiveRateBoard.new(options).render();
     });

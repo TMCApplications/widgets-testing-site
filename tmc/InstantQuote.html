@@ -53,34 +53,22 @@
             delivery_text: "*We charge £{delivery_charge} for delivery in two business days by 1pm. " +
                 "<a href=\"https://www.travelmoneyclub.co.uk/go-premium/\">Go Premium</a> " +
                 "for next business day delivery.",
+            saving_text: "If you buy £{cost} of {target_currency_code} from Travel Money Club at " +
+                "{target_currency_symbol}{rate} you will save £{saving_amount}. If you bought the same amount of " +
+                "{target_currency_code} from {competitor_name} it would cost you £{competitor_cost} at their " +
+                "rate of {target_currency_symbol}{competitor_rate}.",
             footer_text: "We take your privacy very seriously and promise never to share this data with third " +
                 "parties without your consent. Take a look at our " +
                 "<a href=\"http://help.travelmoneyclub.co.uk/privacy-policy\">privacy policy</a> for more information." +
                 "<br /><br />" +
                 "Please note that we always round the foreign currency to the lowest available denomination. The " +
                 "exchange rate shown is constantly updated with the latest market data so costs may go up and down.",
-
-            // Optional (with defaults)
             capture_travel_information: true,
-            // heading_text: 'Get an Instant Quote',
-            // button_text: 'Get it now!',
-            // min_gbp: 100,
-            // max_gbp: 2500,
-            // error_message: 'Whoops! Something went wrong please contact us for help or click the retry button below.',
-            // saving_text: "",
-            // example:
-            saving_text: "Spending £{cost} at {target_currency_symbol}{rate} you will save £{saving_amount}. If you bought the same amount of " +
-                  "{target_currency_code} from {competitor_name} it would cost you £{competitor_cost} at their " +
-                  "rate of {target_currency_symbol}{competitor_rate}.",
-            // onSubmit: function(callback) {
-            //     callback()
-            // },
 
-            // TMC
+            // TMC Only
             banner_visible: true,
-            banner_link: "http://",
+            banner_link: "https://www.travelmoneyclub.co.uk/go-premium/",
             banner_text: "Go premium for even better rates",
-            // suspended_currency_text: 'This currency is temporarily unavailable.',
         };
 
         SPENDOLOGY.InstantQuote.new(options).render({
