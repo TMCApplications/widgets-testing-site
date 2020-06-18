@@ -50,19 +50,18 @@
             selector: "#InstantQuote",
             api_url: 'https://api-test.exc-nonprod.spendology.cloud',
             button_url: 'https://app-test.exc-nonprod.spendology.cloud/signup',
-            delivery_text: "*We charge £{delivery_charge} for delivery in two business days by 1pm. " +
-                "<a href=\"https://www.travelmoneyclub.co.uk/go-premium/\">Go Premium</a> " +
-                "for next business day delivery.",
-            saving_text: "If you buy £{cost} of {target_currency_code} from Travel Money Club at " +
+            delivery_text: "*Delivery is £5.95 for orders under £750, free for larger amounts.",
+            saving_text: "If you buy £{cost} of {target_currency_code} from us at " +
                 "{target_currency_symbol}{rate} you will save £{saving_amount}. If you bought the same amount of " +
                 "{target_currency_code} from {competitor_name} it would cost you £{competitor_cost} at their " +
                 "rate of {target_currency_symbol}{competitor_rate}.",
-            footer_text: "We take your privacy very seriously and promise never to share this data with third " +
-                "parties without your consent. Take a look at our " +
-                "<a href=\"http://help.travelmoneyclub.co.uk/privacy-policy\">privacy policy</a> for more information." +
+            footer_text: "<small>" +
+                "Next business day delivery by fully insured Royal Mail Special Delivery Guaranteed by 1pm if you order before 1pm any business day.**\n" +
                 "<br /><br />" +
-                "Please note that we always round the foreign currency to the lowest available denomination. The " +
-                "exchange rate shown is constantly updated with the latest market data so costs may go up and down.",
+                "We take your privacy very seriously and promise never to share this data with third parties without your consent. Take a look at our privacy policy for more information.\n" +
+                "<br /><br />" +
+                "Please note that we always round the foreign currency to the lowest available denomination. The exchange rate shown is constantly updated with the latest market data so costs may go up and down." +
+                "</small>",
             capture_travel_information: true,
 
             // TMC Only
