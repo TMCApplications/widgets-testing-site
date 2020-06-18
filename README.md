@@ -1,3 +1,3 @@
 # widgets-testing-site
 
-https://amazing-swanson-438f8a.netlify.app/
+https://spendology-widget-testing.netlify.app/
