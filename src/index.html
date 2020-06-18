@@ -7,7 +7,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="grid grid-cols-3 h-screen" x-data="getData()">
+    <div class="grid grid-cols-4 h-screen" x-data="getData()">
         <div class="col-span-1 border-r-4 grid grid-cols-1">
         <template x-for="client in clients">
             <div class="ml-10 border-4 shadow-sm p-5 m-5 text-center">
@@ -15,7 +15,7 @@
                 <template x-for="widget in client.widgets">
                     <div class="mb-5">
                         <button
-                            class="text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                            class="text-white font-semibold py-2 px-4 border rounded shadow"
                             :class="widget.classes"
                             x-text="widget.name"
                             x-on:click="loadWidget(widget.path)"
@@ -25,7 +25,7 @@
             </div>
         </template>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-3">
             <iframe src="exc/InstantQuote.html" width="100%" class="h-screen " id="widget-preview"></iframe>
         </div>
     </div>
