@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TravelMoneyClub.co.uk">
+    <title>TravelMoneyClub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/europa_font.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <br />
+
+    <div class="flex mb-4">
+        <div class="sm:invisible md:w-1/3"></div>
+        <div class="sm:w-full md:w-1/3">
+            <div id="RateComparison" />
+        </div>
+        <div class="sm:invisible md:w-1/3"></div>
+    </div>
+
+    <script type="text/javascript" src="../assets/js/snippet.js"></script>
+</body>
+<script>
+    window.addEventListener('SPENDOLOGY_WIDGETS_LOADED', function () {
+        var options = {
+            selector: "#RateComparison",
+            api_url: 'https://api-test.exc-nonprod.spendology.cloud',
+            results_message: "Save up to £{saving} right now when exchanging £{comparison_amount}",
+            button_url: "https://www.travelmoneyclub.co.uk/go-premium/",
+            button_text: "Join the club",
+            premium_rates_enabled: true,
+            banner_visible: true,
+            banner_link: "https://www.travelmoneyclub.co.uk/go-premium/",
+            banner_text: "Go premium for even bigger savings",
+        };
+
+        var widget = SPENDOLOGY.RateComparison.new(options).render({
+            currencies: [
+                "EUR", "USD", "AED", "AUD", "CAD", "CHF", "CZK", "DKK", "HKD", "HRK", "HUF", "JPY", "MXN", "NOK", "NZD", "PLN", "SEK", "SGD", "THB", "ZAR"
+            ]
+        });
+    });
+</script>
+</html>
