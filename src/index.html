@@ -2,28 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Widget Examples</title>
+    <title>Widgets test</title>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="grid grid-cols-4 h-screen" x-data="getData()">
         <div class="col-span-1 border-r-4 grid grid-cols-1">
-        <template x-for="client in clients">
-            <div class="ml-10 border-4 shadow-sm p-5 m-5 text-center">
-                <div class="text-xl mb-5" x-text="client.name + ' (' + client.code + ')'"></div>
-                <template x-for="widget in client.widgets">
-                    <div class="mb-5">
-                        <button
-                            class="text-white font-semibold py-2 px-4 border rounded shadow"
-                            :class="widget.classes"
-                            x-text="widget.name"
-                            x-on:click="loadWidget(widget.path)"
-                        ></button>
-                    </div>
-                </template>
-            </div>
-        </template>
+            <template x-for="client in clients">
+                <div class="border-4 shadow-sm p-5 m-5 text-center">
+                    <div class="text-xl mb-5" x-text="client.name + ' (' + client.code + ')'"></div>
+                    <template x-for="widget in client.widgets">
+                        <div class="mb-5">
+                            <button
+                                class="text-white font-semibold py-2 px-4 border rounded shadow"
+                                :class="widget.classes"
+                                x-text="widget.name"
+                                x-on:click="loadWidget(widget.path)"
+                            ></button>
+                        </div>
+                    </template>
+                </div>
+            </template>
         </div>
         <div class="col-span-3">
             <iframe src="exc/InstantQuote.html" width="100%" class="h-screen" id="widget-preview"></iframe>
@@ -33,6 +33,7 @@
         function loadWidget(widgetPath) {
             document.getElementById('widget-preview').src = widgetPath;
         }
+
         function getData() {
             return {
                 clients: [
