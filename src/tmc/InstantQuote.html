@@ -71,6 +71,10 @@
             banner_text: "Go premium for even better rates",
         };
 
+        if (SPENDOLOGY.hasOwnProperty('saveReferralData')) {
+            SPENDOLOGY.saveReferralData(null, 'referral_code');
+        }
+
         SPENDOLOGY.InstantQuote.new(options).render({
             selected_currency: currency ? currency : 'EUR',
             selected_destination: destination ? destination : null,

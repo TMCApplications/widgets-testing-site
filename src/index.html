@@ -4,23 +4,37 @@
     <meta charset="UTF-8">
     <title>Widgets test</title>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
     <div class="grid grid-cols-4 h-screen" x-data="getData()">
-        <div class="col-span-1 border-r-4 grid grid-cols-1 p-5 pb-0">
+        <div class="col-span-1 border-r-4 grid grid-cols-1 p-5 pb-0 overflow-auto">
             <template x-for="client in clients">
                 <div class="border-4 shadow-sm p-5 mb-5 text-center">
                     <div class="text-xl mb-5" x-text="client.name + ' (' + client.code + ')'"></div>
-                    <template x-for="widget in client.widgets">
-                        <div class="mb-5">
-                            <button
-                                class="text-white font-semibold py-2 px-4 border rounded shadow"
-                                :class="widget.classes"
-                                x-text="widget.name"
-                                x-on:click="loadWidget(widget.path)"
-                            ></button>
-                        </div>
+                    <div class="grid grid-cols-1" x-bind:class="{'xl:grid-cols-3' : client.widgets.length == 3}">
+                        <template x-for="widget in client.widgets">
+                            <div class="mb-5">
+                                <button
+                                    class="text-white font-semibold py-1 px-2 border rounded shadow h-full"
+                                    :class="widget.classes"
+                                    x-text="widget.name"
+                                    x-on:click="loadWidget(widget.path, client.referralCode)"
+                                ></button>
+                            </div>
+                        </template>
+                    </div>
+                    <template x-if="client.showReferralCodeInput">
+                        <label for="referralCode" class="block text-gray-700 text-sm font-bold mb-2 text-left">
+                            Enter referral code
+                            <br />
+                            <small class="hidden lg:inline">
+                                Click on a widget button to load with referral code entered
+                            </small>
+                        </label>
+                        <input id="referralCode" type="text" x-model="client.referralCode" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                     </template>
                 </div>
             </template>
@@ -30,8 +44,18 @@
         </div>
     </div>
     <script>
-        function loadWidget(widgetPath) {
-            document.getElementById('widget-preview').src = widgetPath;
+        function loadWidget(widgetPath, referralCode) {
+            var url = widgetPath;
+
+            if (url && referralCode) {
+                url += '?referral_code=' + referralCode;
+                Toastify({
+                    text: "Widget loaded with referral code: " + referralCode,
+                    duration: 10000,
+                }).showToast();
+            }
+
+            document.getElementById('widget-preview').src = url;
         }
 
         function getData() {
@@ -61,10 +85,11 @@
                     {
                         code: 'TMC',
                         name: 'Travel Money Club',
+                        showReferralCodeInput: true,
                         widgets: [
                             {
                                 name: 'Instant Quote',
-                                path: 'tmc/InstantQuote.html?referral_code=ABC123',
+                                path: 'tmc/InstantQuote.html',
                                 classes: 'bg-blue-500 hover:bg-blue-700',
                             },
                             {

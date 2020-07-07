@@ -36,6 +36,11 @@
             banner_link: "https://www.travelmoneyclub.co.uk/go-premium/",
             banner_text: "Go premium for even better rates",
         };
+
+        if (SPENDOLOGY.hasOwnProperty('saveReferralData')) {
+            SPENDOLOGY.saveReferralData(null, 'referral_code');
+        }
+
         SPENDOLOGY.LiveRateBoard.new(options).render();
     });
 </script>

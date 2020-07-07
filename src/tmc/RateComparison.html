@@ -37,6 +37,10 @@
             banner_text: "Go premium for even bigger savings",
         };
 
+        if (SPENDOLOGY.hasOwnProperty('saveReferralData')) {
+            SPENDOLOGY.saveReferralData(null, 'referral_code');
+        }
+
         var widget = SPENDOLOGY.RateComparison.new(options).render({
             currencies: [
                 "EUR", "USD", "AED", "AUD", "CAD", "CHF", "CZK", "DKK", "HKD", "HRK", "HUF", "JPY", "MXN", "NOK", "NZD", "PLN", "SEK", "SGD", "THB", "ZAR"
