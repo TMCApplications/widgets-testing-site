@@ -12,8 +12,8 @@
     <div class="grid grid-cols-4 h-screen" x-data="getData()">
         <div class="col-span-1 border-r-4 grid grid-cols-1 p-2 pb-0 overflow-auto">
             <template x-for="client in clients">
-                <div class="border-4 shadow-sm p-2 mb-5 text-center">
-                    <div class="text-xl mb-5" x-text="client.name + ' (' + client.code + ')'"></div>
+                <div class="border-4 shadow-sm p-2 mb-2 text-center">
+                    <div class="text-xl mb-2" x-text="client.name + ' (' + client.code + ')'"></div>
                     <div class="grid grid-cols-1" x-bind:class="{
                         'xl:grid-cols-3' : client.widgets.length == 3,
                         'lg:grid-cols-2' : client.widgets.length == 2,
@@ -43,7 +43,7 @@
             </template>
         </div>
         <div class="col-span-3">
-            <iframe src="exc/InstantQuote.html" width="100%" class="h-screen" id="widget-preview"></iframe>
+            <iframe src="tmc/InstantQuote.html" width="100%" class="h-screen" id="widget-preview"></iframe>
         </div>
     </div>
     <script>
