@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TravelMoneyClub.co.uk">
+    <title>TravelMoneyClub</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/europa_font.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <br />
+
+    <div class="flex mb-4">
+        <div class="sm:invisible md:w-1/3"></div>
+        <div class="sm:w-full md:w-1/3">
+            <div id="RateComparison" />
+        </div>
+        <div class="sm:invisible md:w-1/3"></div>
+    </div>
+
+    <script type="text/javascript" src="../assets/js/snippet.js"></script>
+</body>
+<script>
+    window.addEventListener("SPENDOLOGY_WIDGETS_LOADED", function () {
+        var apiUrl = "https://api-test.tct-nonprod.spendology.cloud";
+        var rateComparisonId = "RateComparison";
+        var widget = document.getElementById(rateComparisonId);
+        if (widget) {
+            var p = document.createElement("p");
+            p.className = "tmc-widget-footnote";
+            p.textContent = "Exchange rates were obtained in the last 15 minutes either from the vendor’s public website or a price comparison site where the vendor advertises their rates, based on ordering £1,000 of currency for home delivery and excludes delivery charges. Rates can change in real time so the rates shown here may no longer be available";
+            var rateComparisonOptions = {
+                selector: "#" + rateComparisonId,
+                api_url: apiUrl,
+                button_url: "https://www.thomascook.com/travel-money",
+                button_url_add_currency_code_field: "currency",
+                comparison_amount: "1000",
+                button_text: "get quote",
+                error_message: "Sorry! We are temporarily unable to show you the latest rates for this currency. Please call us on 0203 865 0786 or email travelmoney@thomascook.com for further information.",
+            };
+
+            SPENDOLOGY.RateComparison.new(rateComparisonOptions).render({
+                currencies: ["RMB", ]
+            });
+            widget.appendChild(p);
+        }
+    });
+
+</script>
+</html>

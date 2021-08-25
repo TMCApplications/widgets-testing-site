@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TravelMoneyClub.co.uk">
+    <title>TravelMoneyClub</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link href="../assets/css/europa_font.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script type="application/javascript">
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+        }
+    </script>
+</head>
+
+<body>
+<br />
+
+<div class="flex mb-4">
+    <div class="sm:invisible md:w-1/3"></div>
+    <div class="sm:w-full md:w-1/3">
+        <div id="InstantQuote" />
+    </div>
+    <div class="sm:invisible md:w-1/3"></div>
+</div>
+
+<div w3-include-html="html/sprites.html" style="display:none;"></div>
+<script src="../assets/js/snippet.js"></script>
+<script defer>w3.includeHTML()</script>
+</body>
+<script>
+    window.addEventListener('SPENDOLOGY_WIDGETS_LOADED', function() {
+        var currency = getURLParameter('currency');
+        var destination = getURLParameter('destination');
+        var departure = getURLParameter('departure');
+        var spend = getURLParameter('spend');
+        var referral_code = getURLParameter('referral_code');
+
+        if (!spend) {
+            spend = getURLParameter('amount')
+        }
+
+        var options = {
+            selector: "#InstantQuote",
+            api_url: 'https://api-test.alt-nonprod.spendology.cloud',
+            button_url: 'https://app-test.alt-nonprod.spendology.cloud/signup',
+            delivery_text: "*We charge {base_currency_symbol}{delivery_charge} for delivery in two business days by 1pm. " +
+                "<a href=\"https://www.travelmoneyclub.co.uk/go-premium/\">Go Premium</a> " +
+                "for next business day delivery.",
+            saving_text: "If you buy {base_currency_symbol}{cost} of {target_currency_code} from Travel Money Club at " +
+                "{target_currency_symbol}{rate} you will save {base_currency_symbol}{saving_amount}. If you bought the same amount of " +
+                "{target_currency_code} from {competitor_name} it would cost you {base_currency_symbol}{competitor_cost} at their " +
+                "rate of {target_currency_symbol}{competitor_rate}.",
+            footer_text: "We take your privacy very seriously and promise never to share this data with third " +
+                "parties without your consent. Take a look at our " +
+                "<a href=\"http://help.travelmoneyclub.co.uk/privacy-policy\">privacy policy</a> for more information." +
+                "<br /><br />" +
+                "Please note that we always round the foreign currency to the lowest available denomination. The " +
+                "exchange rate shown is constantly updated with the latest market data so costs may go up and down.",
+            capture_travel_information: true,
+
+            // TMC Only
+            banner_visible: true,
+            banner_link: "https://www.travelmoneyclub.co.uk/go-premium/",
+            banner_text: "Go premium for even better rates",
+        };
+
+        SPENDOLOGY.InstantQuote.new(options).render({
+            selected_currency: currency ? currency : 'EUR',
+            selected_destination: destination ? destination : null,
+            selected_departure: departure ? departure : null,
+            spend: spend ? spend : 750,
+            referral_code,
+        });
+    });
+</script>
+</html>

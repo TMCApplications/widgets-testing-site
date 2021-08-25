@@ -1,0 +1,49 @@
+.tmc-widget {
+    font-family: sans-serif
+}
+
+.tmc-widget-inner:before,.tmc-widget-section-blue-background {
+    background-color: #59a498
+}
+
+.tmc-widget .btn,.tmc-widget a.btn {
+    background-color: #e86942
+}
+
+.tmc-widget .btn:hover,.tmc-widget a.btn:hover {
+    color: #fff;
+    background-color: #bf3e18
+}
+
+.tmc-widget-section {
+    border-top: 1px solid rgba(42,45,46,.1)
+}
+
+.tmc-widget-col-border-right {
+    border-right: 1px solid rgba(42,45,46,.1)
+}
+
+.tmc-widget-lead-text {
+    color: #37e1b7
+}
+
+.tmc-widget-info,.tmc-widget a:hover.tmc-widget-info {
+    background-image: linear-gradient(-197deg,#3d82f0,#70b8f9);
+    color: #fff
+}
+
+.tmc-widget-pop-over:after {
+    background-color: #68acf5
+}
+
+.tmc-widget-pop-over-inner,.tmc-widget a.tmc-widget-bar {
+    background-image: linear-gradient(-197deg,#3d82f0,#70b8f9)
+}
+
+.tmc-widget-currency-value {
+    font-size: 14px
+}
+
+.tmc-widget-heading {
+    overflow-wrap: break-word
+}
