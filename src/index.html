@@ -13,7 +13,7 @@
         <div class="col-span-1 border-r-4 grid grid-cols-1 p-2 pb-0 overflow-auto">
             <template x-for="client in clients">
                 <div class="border-4 shadow-sm p-2 mb-2 text-center">
-                    <div class="text-xl mb-2" x-text="client.name + ' (' + client.code + ')'"></div>
+                    <div class="text-lg mb-2" x-text="client.name + ' (' + client.code + ')'"></div>
                     <div class="grid grid-cols-1" x-bind:class="{
                         'xl:grid-cols-3' : client.widgets.length == 3,
                         'lg:grid-cols-2' : client.widgets.length == 2,
@@ -21,7 +21,7 @@
                         <template x-for="widget in client.widgets">
                             <div class="mb-2">
                                 <button
-                                    class="text-white text-sm font-semibold py-1 px-2 border rounded shadow h-full"
+                                    class="text-white text-xs font-semibold py-1 px-2 border rounded shadow h-full"
                                     :class="widget.classes"
                                     x-text="widget.name"
                                     x-on:click="loadWidget(widget.path, client.referralCode)"
@@ -86,6 +86,17 @@
                         ]
                     },
                     {
+                        code: 'BHT',
+                        name: 'Barrhead',
+                        widgets: [
+                            {
+                                name: 'Instant Quote',
+                                path: 'bht/InstantQuote.html',
+                                classes: 'bg-blue-500 hover:bg-blue-700',
+                            },
+                        ]
+                    },
+                    {
                         code: 'CRU',
                         name: 'Cruise1st',
                         widgets: [
@@ -118,6 +129,22 @@
                         ]
                     },
                     {
+                        code: 'TCT',
+                        name: 'Thomas Cook',
+                        widgets: [
+                            {
+                                name: 'Instant Quote',
+                                path: 'tct/InstantQuote.html',
+                                classes: 'bg-blue-500 hover:bg-blue-700',
+                            },
+                            {
+                                name: 'Rate Comparison',
+                                path: 'tct/RateComparison.html',
+                                classes: 'bg-orange-500 hover:bg-orange-700',
+                            },
+                        ]
+                    },
+                    {
                         code: 'TMC',
                         name: 'Travel Money Club',
                         showReferralCodeInput: true,
@@ -135,22 +162,6 @@
                             {
                                 name: 'Rate Comparison',
                                 path: 'tmc/RateComparison.html',
-                                classes: 'bg-orange-500 hover:bg-orange-700',
-                            },
-                        ]
-                    },
-                    {
-                        code: 'TCT',
-                        name: 'Thomas Cook',
-                        widgets: [
-                            {
-                                name: 'Instant Quote',
-                                path: 'tct/InstantQuote.html',
-                                classes: 'bg-blue-500 hover:bg-blue-700',
-                            },
-                            {
-                                name: 'Rate Comparison',
-                                path: 'tct/RateComparison.html',
                                 classes: 'bg-orange-500 hover:bg-orange-700',
                             },
                         ]
