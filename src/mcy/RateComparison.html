@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TravelMoneyClub.co.uk">
+    <title>TravelMoneyClub</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/europa_font.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <br />
+
+    <div class="flex mb-4">
+        <div class="sm:invisible md:w-1/3"></div>
+        <div class="sm:w-full md:w-1/3">
+            <div id="RateComparison" />
+        </div>
+        <div class="sm:invisible md:w-1/3"></div>
+    </div>
+
+    <script type="text/javascript" src="../assets/js/snippet.js"></script>
+</body>
+<script data-api-url="https://api-test.mcy-nonprod.spendology.cloud">
+    var apiUrl = document.currentScript.getAttribute('data-api-url');
+
+    window.addEventListener('SPENDOLOGY_WIDGETS_LOADED', function () {
+        /*************************************************
+         * Rate Comparison
+         **************************************************/
+        var rateComparisonId = 'RateComparison';
+        if (document.getElementById(rateComparisonId)) {
+            var rateComparisonOptions = {
+                selector: '#' + rateComparisonId,
+                api_url: apiUrl,
+                button_url: 'javascript:void(0);',
+                button_text: 'Buy now',
+                poll_frequency: 60000
+            };
+
+            SPENDOLOGY.RateComparison.new(rateComparisonOptions).render({
+                currencies: []
+            });
+        }
+    });
+</script>
+</html>
