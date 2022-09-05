@@ -7,9 +7,17 @@
     <meta name="author" content="TravelMoneyClub.co.uk">
     <title>Instant Quote</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <link href="../assets/css/europa_font.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/astra.css" rel="stylesheet">
+    <link href="css/frontend-lite.min.css" rel="stylesheet">
+    <link href="css/main.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+    <link href="css/post-5.css" rel="stylesheet">
+    <link href="css/post-7.css" rel="stylesheet">
+    <link href="css/post-13.css" rel="stylesheet">
+    <link href="css/post-205.css" rel="stylesheet">
+    <link href="css/widget-carousel.min.css" rel="stylesheet">
+    <link href="css/widget-nav-menu.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
     <script type="application/javascript">
@@ -25,7 +33,19 @@
 <div class="flex mb-4">
     <div class="sm:invisible md:w-1/3"></div>
     <div class="sm:w-full md:w-1/3">
-        <div id="InstantQuote" />
+        <div class="entry-content elementor-7 elementor-kit-5 elementor-13 elementor-205">
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6906eb3 animated-slow animated fadeIn" data-id="6906eb3" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeIn&quot;}">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                    <div class="elementor-element elementor-element-7b3a468 lmd-live-quote elementor-widget elementor-widget-html" data-id="7b3a468" data-element_type="widget" data-widget_type="html.default">
+                        <div class="elementor-widget-container">
+                            <div class="widget">
+                                <div id="InstantQuote"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="sm:invisible md:w-1/3"></div>
 </div>
@@ -36,40 +56,36 @@
 </body>
 <script>
     window.addEventListener('SPENDOLOGY_WIDGETS_LOADED', function() {
-        var currency = getURLParameter('currency');
-        var destination = getURLParameter('destination');
-        var departure = getURLParameter('departure');
-        var spend = getURLParameter('spend');
-        var referral_code = getURLParameter('referral_code');
+        var apiUrl = 'https://api-test.alt-nonprod.us.spendology.cloud';
 
-        if (!spend) {
-            spend = getURLParameter('amount')
+        // SPENDOLOGY.saveReferralData('.<your domain here>', 'referral_code');
+
+        /*************************************************
+         * Instant Quote
+         **************************************************/
+        var instantQuoteId = 'InstantQuote';
+        if (document.getElementById(instantQuoteId)) {
+            var instantQuoteOptions = {
+                selector: "#" + instantQuoteId,
+                api_url: apiUrl,
+                button_url: 'https://app-test.alt-nonprod.us.spendology.cloud/signup',
+                button_text: 'Buy now',
+                delivery_text: "* We charge £4.95 for delivery. ",
+                footer_text: "This will appear underneath the widget. You can put <b>html code</b> in here." +
+                    " Usually this text has a link to your <a href\"#privacy_policy\">privacy policy</a> and other " +
+                    "disclaimers. For example:<br /><br />" +
+                    "Please note that we always round the foreign currency to the lowest available denomination. The " +
+                    "exchange rate shown is constantly updated with the latest market data so costs may go up and down."
+                ,
+            };
+
+            SPENDOLOGY.InstantQuote.new(instantQuoteOptions).render({
+                selected_currency: 'USD', 	// Default selected currency
+                spend: 750,					// Default spend amount (GBP)
+                referral_code: null,
+            });
         }
 
-        var options = {
-            selector: "#InstantQuote",
-            api_url: 'https://api-test.alt-nonprod.us.spendology.cloud',
-            button_url: 'https://app-test.alt-nonprod.us.spendology.cloud/signup',
-            delivery_text: "*We charge {base_currency_symbol}{delivery_charge} for next business day delivery by 1pm.",
-            saving_text: "If you buy {base_currency_symbol}{cost} of {target_currency_code} from Travel Money Club at " +
-                "{target_currency_symbol}{rate} you will save {base_currency_symbol}{saving_amount}. If you bought the same amount of " +
-                "{target_currency_code} from {competitor_name} it would cost you {base_currency_symbol}{competitor_cost} at their " +
-                "rate of {target_currency_symbol}{competitor_rate}.",
-            footer_text: "We take your privacy very seriously and promise never to share this data with third " +
-                "parties without your consent. Take a look at our " +
-                "<a href=\"http://help.travelmoneyclub.co.uk/privacy-policy\">privacy policy</a> for more information." +
-                "<br /><br />" +
-                "Please note that we always round the foreign currency to the lowest available denomination. The " +
-                "exchange rate shown is constantly updated with the latest market data so costs may go up and down.",
-        };
-
-        SPENDOLOGY.InstantQuote.new(options).render({
-            selected_currency: currency ? currency : 'EUR',
-            selected_destination: destination ? destination : null,
-            selected_departure: departure ? departure : null,
-            spend: spend ? spend : 750,
-            referral_code,
-        });
     });
 </script>
 </html>

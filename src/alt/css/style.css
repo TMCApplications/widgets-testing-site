@@ -1,92 +1,24 @@
 .tmc-widget {
-    font-family: "Europa", sans-serif;
-}
-
-.tmc-widget input[type=text],
-.tmc-widget input[type=tel],
-.tmc-widget input[type=email],
-.tmc-widget input[type=number],
-.tmc-widget select,
-.tmc-widget textarea {
-    font-size: 14px;
-    font-weight: 400;
-}
-
-@media (min-width: 992px) {
-    .tmc-widget input[type=text],
-    .tmc-widget input[type=tel],
-    .tmc-widget input[type=email],
-    .tmc-widget input[type=number],
-    .tmc-widget select,
-    .tmc-widget textarea {
-        font-size: 16px;
-    }
-}
-
-.tmc-widget-inner {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    font-family: sans-serif;
 }
 
 .tmc-widget-inner::before,
 .tmc-widget .btn,
-.tmc-widget a.btn {
-    background-image: linear-gradient(-151deg, #2AF598 0%, #13BCE1 100%);
-    font-weight: 700;
-    font-size: 15px;
-}
-
-.tmc-widget-inner-no-border-top {
-    border-radius: 4px;
+.tmc-widget a.btn,
+.tmc-widget-section-blue-background {
+    background-color: #0b8e88;
 }
 
 .tmc-widget-section {
     border-top: 1px solid rgba(42, 45, 46, 0.1);
 }
 
-.tmc-widget-section-blue-background {
-    background-image: linear-gradient(-197deg, #3D82F0 0%, #70B8F9 100%);
-    font-size: 20px;
-}
-
-@media (min-width: 992px) {
-    .tmc-widget-section-blue-background {
-        font-size: 26px;
-    }
-}
-
-@media (min-width: 992px) {
-    .tmc-widget-section-half-padding {
-        padding: 22.5px;
-    }
-}
-
 .tmc-widget-col-border-right {
     border-right: 1px solid rgba(42, 45, 46, 0.1);
 }
 
-.tmc-widget-heading {
-    font-size: 20px;
-}
-
-@media (min-width: 992px) {
-    .tmc-widget-heading {
-        font-size: 24px;
-    }
-}
-
 .tmc-widget-lead-text {
     color: #37E1B7;
-}
-
-.tmc-widget-save-message {
-    font-weight: 200;
-}
-
-@media (min-width: 992px) {
-    .tmc-widget-save-message {
-        font-size: 18px;
-    }
 }
 
 .tmc-widget-info,
@@ -104,42 +36,276 @@ a:hover.tmc-widget-info {
 }
 
 .tmc-widget a.tmc-widget-bar {
-    font-weight: 400;
     background-image: linear-gradient(-197deg, #3D82F0 0%, #70B8F9 100%);
-}
-
-.tmc-widget-currency-name {
-    font-size: 15px;
-}
-
-@media (min-width: 992px) {
-    .tmc-widget-currency-name {
-        font-size: 18px;
-    }
 }
 
 .tmc-widget-currency-value {
     font-size: 14px;
 }
-
-p.tmc-widget-footnote {
-    font-weight: 200;
-    margin-top: 40px;
-    font-size: 16px;
+/*Custom Widget Style*/
+.tmc-widget-inner.tmc-widget-inner-margin-bottom.tmc-widget-inner-no-border-top.rate-comparison-dropdown-container {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-top:20px;
 }
-
-.tmc-widget-footnote a {
-    text-decoration:underline;
+.tmc-widget-inner.tmc-widget-inner-no-border-top {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
-
-.tmc-widget-call-out-text {
-    font-size: 20px;
+.btn-container a {
+    background-color: #003768 !important;
+    font-family: "brown pro", Sans-serif;
+    font-size: 25px !important;
+    text-decoration: none !important;
+}
+.tmc-widget-section.tmc-widget-section-flex.tmc-widget-section-half-padding.tmc-widget-section-blue-background {
+    background-color: #003768;
+    font-family:"brown pro", Sans-serif;
+}
+.tmc-widget-heading{font-family:"brown pro", Sans-serif;color:#003768 !important;}
+#RateComparison,#InstantQuote {
+    padding: 35px;
+}
+.tmc-widget-section.tmc-widget-section-rates-list, .tmc-widget-call-out-text,
+.rw-input.rw-dropdown-list-input,.media-body,
+.tmc-widget-col-padding.tmc-widget-col-flex-center.instant-quote-input-container,
+.instant-quote-input-container input[type="text"]{
+    font-family: "Brownpro semibold", sans-serif;
+}
+.tmc-widget{background-color:transparent !important;}
+.lmd-our-rate .tmc-widget-inner {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.lmd-our-rate #rate-comparison-powered-by-spendology {
+    display: none;
+}
+.lmd-our-rate .tmc-widget-inner {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.lmd-our-rate .row{border-bottom:solid 1px #eee;}
+.lmd-our-rate .btn-container a,.btn.btn-full-width {
+    border-radius: 30px !important;
+}
+.btn.btn-full-width{
+    background-color: #003768 !important;
+    font-family: "brown pro", Sans-serif;
+    font-size: 25px;
+}
+.tmc-widget-inner::before, .tmc-widget .btn, .tmc-widget a.btn, .tmc-widget-section-blue-background {
+    background-color: #fff;
+}
+#instant-quote-container p,.lmd-money-back .tmc-widget-currency-suspended-message,
+.lmd-money-back #live-rates-powered-by-spendology{
+    display: none;
+}
+#InstantQuote {
+    padding: 35px;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
-    margin-bottom: 20px;
+}
+#dropdown_input {
+    border-radius: 30px;
+}
+.rw-widget-input.rw-widget-picker.rw-widget-container {
+    background-color: #f5f5f5;
+    border-radius: 22px !important;
+    padding: 5px;
+}
+.tmc-widget-section.tmc-widget-section-half-padding {
+    font-family: 'Brownpro semibold';
+    padding: 10px 30px 10px 30px;
+    border: none;
+}
+.tmc-widget-section.tmc-widget-section-half-padding p {
+    margin-bottom: 10px;
+}
+.tmc-widget-heading {
+    margin-bottom: 0px !important;
+}
+#LiveRateBoard {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding:20px;
+}
+.rw-btn.rw-btn-select:focus, .rw-btn.rw-btn-select:hover {
+    background-color: #1A4B77 !important;
+    border-color: #1A4B77 !important;
+}
+.lmd-live-quote .tmc-widget-section-flex {
+    display: inherit !important;
+    border: none;
+}
+.lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center {
+    max-width: 100%;
+}
+.lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center {
+    max-width: 35%;
+    margin: 0 auto;
+    border: none;
+    text-align: center;
+}
+.tmc-widget-currency-symbol {
+    width: 100%;
+}
+.tmc-widget-section {
+    border: none;
+}
+.lmd-live-quote .rw-widget-input.rw-widget-picker {
+    background-color: #f5f5f5;
+    padding: 4px;
+    border-radius: 20px;
+}
+.lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center:nth-child(1):before {
+    content: "What you’ll spend:";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0
+}
+.lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center:nth-child(2):before {
+    content: "What you’ll receive:";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+}
+.lmd-live-quote .tmc-widget-currency-symbol{margin-right:-10px;}
+.lmd-live-quote .tmc-widget-heading{display:none;}
+.lmd-live-quote input[type="text"]{font-size: 18px;}
+.lmd-live-quote .tmc-widget-inner {
+    border-radius: 30px;
+}
+.lmd-live-quote #instant-quote-powered-by-spendology{display:none;}
+.lmd-live-quote .btn-container {
+    margin-bottom: 30px;
+}
+/*Money Back Widget Style*/
+.lmd-money-back .tmc-widget-col-padding.tmc-widget-col-flex-center.tmc-widget-col-border-right {
+    background-color: #f5f5f5;
+    padding: 4px;
+    max-width: 200px;
+    margin: 0 auto;
+    border-radius: 24px;
+}
+.lmd-money-back .tmc-widget-inner {
+    border-radius: 30px;
+}
+.lmd-money-back .tmc-widget-section:first-child {
+    width: 100%;
+    background-color: #f5f5f5;
+    height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 36px;
+    max-width: 87%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.lmd-money-back .tmc-widget-lead-text {
+    font-size: 15px;
+    padding-top: 11px;
+    font-family: 'Brownpro semibold';
+}
+.tmc-widget-flag-icon + div {
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+}
+@media(max-width:768px){
+    .lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center {
+        max-width: 60%;
+    }
+}
+@media(max-width:580px){
+    #InstantQuote {
+        padding: 0px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .lmd-money-back .tmc-widget-lead-text {
+        font-size: 12px;
+    }
+    .lmd-money-back .tmc-widget-heading {
+        font-size: 18px !important;
+    }
+    .lmd-money-back .tmc-widget-section:first-child {
+        height: 45px;
+    }
+    .lmd-money-back .tmc-widget-col-padding.tmc-widget-col-flex-center.tmc-widget-col-border-right {
+        max-width: 100px;
+    }
+    .lmd-money-back .tmc-widget-currency-value,.lmd-money-back .tmc-widget-currency-name {
+        font-size: 12px;
+    }
+    .tmc-widget-flag-icon {
+        margin-right: 9px;
+    }
+    .lmd-our-rate .tmc-widget-call-out-text {
+        font-size: 13px !important;
+    }
+    .lmd-our-rate .tmc-widget-section {
+        padding-top: 10px;
+    }
 }
 
-@media (min-width: 992px) {
-    .tmc-widget-section-rates-list {
-        font-size: 20px;
-    }
+.lmd-our-rate .tmc-widget-section{
+    background-color:white !important;
+    color: #003768;
+    box-shadow:none !important;}
+
+
+.lmd-our-rate .tmc-widget-section-rates-list{
+    padding: 10px 45px 0px 45px;
+}
+
+.lmd-our-rate .tmc-widget-call-out-text{
+    border: 2px solid #003768;
+    border-radius: 30px;
+    padding:10px;
+}
+
+.elementor-swiper-button{
+    background:white;
+    box-shadow:#ddd 2px 2px 10px;
+    border-radius:30px;
+    padding:14px;
+}
+
+.lmd-live-quote .tmc-widget-currency-symbol{
+    color: #003768;
+    font-size:24px;
+    font-weight:bold;
+    padding-right:15px;
+}
+
+.lmd-live-quote .tmc-widget-currency-symbol+ input{
+    color: #003768;
+    font-size:24px;
+}
+.lmd-live-quote  .tmc-widget-section-half-padding{
+    padding-bottom:30px;
+
+}
+
+.lmd-live-quote .btn-full-width{
+    height:60px;
+}
+#LiveRateBoardContainer .btn-full-width,#RateComparison .btn-full-width,#InstantQuote .btn-full-width{color:transparent !important;}
+#LiveRateBoardContainer .btn-full-width:before, #RateComparison .btn-full-width:before,#InstantQuote .btn-full-width:before {
+    content: "GET A QUOTE";
+    color: #fff;
+    position: absolute;
+}
+
+#LiveRateBoardContainer .btn-full-width{
+    /*display: none !important;*/
 }
