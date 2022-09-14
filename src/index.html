@@ -24,7 +24,7 @@
                                     class="text-white text-xs font-semibold py-1 px-2 border rounded shadow h-full"
                                     :class="widget.classes"
                                     x-text="widget.name"
-                                    x-on:click="loadWidget(widget.path, client.referralCode)"
+                                    x-on:click="loadWidget(widget.path, client.referralCode, client.includeDeliveryChargeInCalculationsInput)"
                                 ></button>
                             </div>
                         </template>
@@ -39,6 +39,18 @@
                         </label>
                         <input id="referralCode" type="text" x-model="client.referralCode" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
                     </template>
+                    <template x-if="client.showIncludeDeliveryChargeInCalculationsInput">
+                        <div class="flex items-center gap-5 my-5">
+                            <label for="referralCode" class="block text-gray-700 text-sm font-bold mb-2 text-left">
+                                Include delivery charge in calculations
+                                <br />
+                                <small class="hidden lg:inline">
+                                    Click on a widget button to reload with setting
+                                </small>
+                            </label>
+                            <input id="includeDeliveryChargeInCalculationsInput" type="checkbox" x-model="client.includeDeliveryChargeInCalculationsInput" value="0"/>
+                        </div>
+                    </template>
                 </div>
             </template>
         </div>
@@ -47,13 +59,21 @@
         </div>
     </div>
     <script>
-        function loadWidget(widgetPath, referralCode) {
-            var url = widgetPath;
+        function loadWidget(widgetPath, referralCode, includeDeliveryChargeInCalculationsInput) {
+            var url = widgetPath + '?';
 
             if (url && referralCode) {
-                url += '?referral_code=' + referralCode;
+                url += 'referral_code=' + referralCode + '&';
                 Toastify({
                     text: "Widget loaded with referral code: " + referralCode,
+                    duration: 10000,
+                }).showToast();
+            }
+
+            if (url && includeDeliveryChargeInCalculationsInput) {
+                url += 'include_delivery_charge_in_calculations=' + includeDeliveryChargeInCalculationsInput + '&';
+                Toastify({
+                    text: "Widget loaded including delivery charge in calculations!",
                     duration: 10000,
                 }).showToast();
             }
@@ -153,6 +173,7 @@
                         code: 'TMC',
                         name: 'Travel Money Club',
                         showReferralCodeInput: true,
+                        showIncludeDeliveryChargeInCalculationsInput: true,
                         widgets: [
                             {
                                 name: 'Instant Quote',
