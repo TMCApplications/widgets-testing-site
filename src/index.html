@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Widgets test</title>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
     <div class="grid grid-cols-4 h-screen" x-data="getData()">
         <div class="col-span-1 border-r-4 grid grid-cols-1 p-2 pb-0 overflow-auto">
-            <template x-for="client in clients">
+            <template :key="client.code" x-for="client in clients">
                 <div class="border-4 shadow-sm p-2 mb-2 text-center">
                     <div class="text-lg mb-2" x-text="client.name + ' (' + client.code + ')'"></div>
                     <div class="grid grid-cols-1" x-bind:class="{
@@ -24,31 +24,90 @@
                                     class="text-white text-xs font-semibold py-1 px-2 border rounded shadow h-full"
                                     :class="widget.classes"
                                     x-text="widget.name"
-                                    x-on:click="loadWidget(widget.path, client.referralCode, client.includeDeliveryChargeInCalculationsInput)"
+                                    x-on:click="loadWidget(widget.path, client)"
                                 ></button>
                             </div>
                         </template>
                     </div>
-                    <template x-if="client.showReferralCodeInput">
-                        <label for="referralCode" class="block text-gray-700 text-sm font-bold mb-2 text-left">
-                            Enter referral code
-                            <br />
-                            <small class="hidden lg:inline">
-                                Click on a widget button to load with referral code entered
-                            </small>
-                        </label>
-                        <input id="referralCode" type="text" x-model="client.referralCode" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-                    </template>
-                    <template x-if="client.showIncludeDeliveryChargeInCalculationsInput">
-                        <div class="flex items-center gap-5 my-5">
-                            <label for="referralCode" class="block text-gray-700 text-sm font-bold mb-2 text-left">
-                                Include delivery charge in calculations
-                                <br />
-                                <small class="hidden lg:inline">
-                                    Click on a widget button to reload with setting
-                                </small>
-                            </label>
-                            <input id="includeDeliveryChargeInCalculationsInput" type="checkbox" x-model="client.includeDeliveryChargeInCalculationsInput" value="0"/>
+                    <template x-if="client.settings.visible">
+                        <div class="grid grid-cols-1">
+                            <div class="mb-2">
+                                <button
+                                    class="text-white text-xs font-semibold py-1 px-2 border rounded shadow h-full bg-gray-800 hover:bg-gray-700"
+                                    x-text="client.settings.show_form ? 'Hide Settings' : 'Show Settings'"
+                                    x-on:click="client.settings.show_form = !client.settings.show_form"
+                                ></button>
+                            </div>
+                        </div>
+
+                        <!-- Main modal -->
+                        <div x-show="client.settings.show_form"
+                             class="absolute z-25 bg-gray-500 opacity-50 inset-0 w-full h-full" ></div>
+                        <div
+                            x-show="client.settings.show_form"
+                            tabindex="-1"
+                             aria-hidden="true"
+                             class="absolute text-left overflow-y-auto overflow-x-hidden fixed inset-0 -mt-24 z-50 w-full flex justify-center items-center shadow-lg"
+                        >
+                            <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <button
+                                        type="button"
+                                        class="absolute right-0 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                        x-on:click="client.settings.show_form = false"
+                                    >
+                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                    <div class="py-6 px-6 lg:px-8">
+                                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Settings</h3>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label for="agentReferenceConfig" class="block text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    Agent reference (config)
+                                                </label>
+                                                <input id="agentReferenceConfig" type="text" x-model="client.agentReferenceConfig" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                                            </div>
+                                            <div>
+                                                <label for="packageReferenceConfig" class="block text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    Package Reference (config)
+                                                </label>
+                                                <input id="packageReferenceConfig" type="text" x-model="client.packageReferenceConfig" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                                            </div>
+                                            <div>
+                                                <label for="referralCodeConfig" class="block text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    Referral code (config)
+                                                </label>
+                                                <input id="referralCodeConfig" type="text" x-model="client.referralCodeConfig" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                                            </div>
+                                            <div>
+                                                <label for="referralCode" class="block text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    Referral code (legacy)
+                                                </label>
+                                                <input id="referralCode" type="text" x-model="client.referralCode" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                                            </div>
+                                            <div class="flex items-center gap-5 my-5">
+                                                <label for="includeDeliveryChargeInCalculationsInput" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    Include delivery charge in calculations
+                                                </label>
+                                                <input id="includeDeliveryChargeInCalculationsInput" type="checkbox" x-model="client.includeDeliveryChargeInCalculationsInput" value="0"/>
+                                            </div>
+                                            <div class="text-xs">
+                                                Click on a widget button after saving to reload with these settings
+                                            </div>
+                                            <div class="grid grid-cols-1">
+                                                <div class="mb-2">
+                                                    <button
+                                                        class="text-white text-xs font-semibold py-1 px-2 border rounded shadow h-full bg-gray-800 hover:bg-gray-700"
+                                                        x-on:click="client.settings.show_form = false"
+                                                    >Save & Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </template>
                 </div>
@@ -59,19 +118,43 @@
         </div>
     </div>
     <script>
-        function loadWidget(widgetPath, referralCode, includeDeliveryChargeInCalculationsInput) {
+        function loadWidget(widgetPath, client) {
             var url = widgetPath + '?';
 
-            if (url && referralCode) {
-                url += 'referral_code=' + referralCode + '&';
+            if (url && client.agentReferenceConfig) {
+                url += 'agentReferenceConfig=' + client.agentReferenceConfig + '&';
                 Toastify({
-                    text: "Widget loaded with referral code: " + referralCode,
+                    text: "Widget loaded with agent reference (config): " + client.agentReferenceConfig,
                     duration: 10000,
                 }).showToast();
             }
 
-            if (url && includeDeliveryChargeInCalculationsInput) {
-                url += 'include_delivery_charge_in_calculations=' + includeDeliveryChargeInCalculationsInput + '&';
+            if (url && client.packageReferenceConfig) {
+                url += 'packageReferenceConfig=' + client.packageReferenceConfig + '&';
+                Toastify({
+                    text: "Widget loaded with package reference (config): " + client.packageReferenceConfig,
+                    duration: 10000,
+                }).showToast();
+            }
+
+            if (url && client.referralCodeConfig) {
+                url += 'referralCodeConfig=' + client.referralCodeConfig + '&';
+                Toastify({
+                    text: "Widget loaded with referral code (config): " + client.referralCodeConfig,
+                    duration: 10000,
+                }).showToast();
+            }
+
+            if (url && client.referralCode) {
+                url += 'referral_code=' + client.referralCode + '&';
+                Toastify({
+                    text: "Widget loaded with referral code (legacy): " + client.referralCode,
+                    duration: 10000,
+                }).showToast();
+            }
+
+            if (url && client.includeDeliveryChargeInCalculationsInput) {
+                url += 'include_delivery_charge_in_calculations=' + client.includeDeliveryChargeInCalculationsInput + '&';
                 Toastify({
                     text: "Widget loaded including delivery charge in calculations!",
                     duration: 10000,
@@ -87,6 +170,9 @@
                     {
                         code: 'USD',
                         name: 'Altour',
+                        settings: {
+                            visible: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',
@@ -101,13 +187,16 @@
                             {
                                 name: 'Rate Comparison',
                                 path: 'alt/RateComparison.html',
-                                classes: 'bg-orange-500 hover:bg-orange-700',
+                                classes: 'bg-yellow-500 hover:bg-yellow-700',
                             },
                         ]
                     },
                     {
                         code: 'EXC',
                         name: 'Exchngr',
+                        settings: {
+                            visible: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',
@@ -122,13 +211,16 @@
                             {
                                 name: 'Rate Comparison',
                                 path: 'exc/RateComparison.html',
-                                classes: 'bg-orange-500 hover:bg-orange-700',
+                                classes: 'bg-yellow-500 hover:bg-yellow-700',
                             },
                         ]
                     },
                     {
                         code: 'FFX',
                         name: 'FairFx',
+                        settings: {
+                            visible: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',
@@ -140,6 +232,9 @@
                     {
                         code: 'MCY',
                         name: 'Mercury Holidays',
+                        settings: {
+                            visible: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',
@@ -149,13 +244,16 @@
                             {
                                 name: 'Rate Comparison',
                                 path: 'mcy/RateComparison.html',
-                                classes: 'bg-orange-500 hover:bg-orange-700',
+                                classes: 'bg-yellow-500 hover:bg-yellow-700',
                             },
                         ]
                     },
                     {
                         code: 'TCT',
                         name: 'Thomas Cook',
+                        settings: {
+                            visible: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',
@@ -165,15 +263,17 @@
                             {
                                 name: 'Rate Comparison',
                                 path: 'tct/RateComparison.html',
-                                classes: 'bg-orange-500 hover:bg-orange-700',
+                                classes: 'bg-yellow-500 hover:bg-yellow-700',
                             },
                         ]
                     },
                     {
                         code: 'TMC',
                         name: 'Travel Money Club',
-                        showReferralCodeInput: true,
-                        showIncludeDeliveryChargeInCalculationsInput: true,
+                        settings: {
+                            visible: true,
+                            show_form: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',
@@ -188,13 +288,16 @@
                             {
                                 name: 'Rate Comparison',
                                 path: 'tmc/RateComparison.html',
-                                classes: 'bg-orange-500 hover:bg-orange-700',
+                                classes: 'bg-yellow-500 hover:bg-yellow-700',
                             },
                         ]
                     },
                     {
                         code: 'VJV',
                         name: 'Jules Verne',
+                        settings: {
+                            visible: false,
+                        },
                         widgets: [
                             {
                                 name: 'Instant Quote',

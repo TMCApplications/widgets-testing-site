@@ -40,7 +40,7 @@
         var destination = getURLParameter('destination');
         var departure = getURLParameter('departure');
         var spend = getURLParameter('spend');
-        var referral_code = getURLParameter('referral_code');
+        var referralCodeLegacy = getURLParameter('referral_code');
 
         if (!spend) {
             spend = getURLParameter('amount')
@@ -72,6 +72,14 @@
             banner_text: "Go premium for even better rates",
         };
 
+        if (SPENDOLOGY.hasOwnProperty('Config')) {
+            SPENDOLOGY.Config({
+                agentReference: getURLParameter('agentReferenceConfig'),
+                packageReference: getURLParameter('packageReferenceConfig'),
+                referralCode: getURLParameter('referralCodeConfig'),
+            });
+        }
+
         if (SPENDOLOGY.hasOwnProperty('saveReferralData')) {
             SPENDOLOGY.saveReferralData(null, 'referral_code');
         }
@@ -81,7 +89,7 @@
             selected_destination: destination ? destination : null,
             selected_departure: departure ? departure : null,
             spend: spend ? spend : 750,
-            referral_code,
+            referral_code: referralCodeLegacy,
         });
     });
 </script>
