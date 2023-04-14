@@ -53,10 +53,10 @@
             delivery_text: "*We charge £{delivery_charge} for delivery in two business days by 1pm. " +
                 "<a href=\"https://www.travelmoneyclub.co.uk/go-premium/\">Go Premium</a> " +
                 "for next business day delivery.",
-            saving_text: "If you buy £{cost} of {target_currency_code} from Travel Money Club at " +
-                "{target_currency_symbol}{rate} you will save £{saving_amount}. If you bought the same amount of " +
-                "{target_currency_code} from {competitor_name} it would cost you £{competitor_cost} at their " +
-                "rate of {target_currency_symbol}{competitor_rate}.",
+            // saving_text: "If you buy £{cost} of {target_currency_code} from Travel Money Club at " +
+            //     "{target_currency_symbol}{rate} you will save £{saving_amount}. If you bought the same amount of " +
+            //     "{target_currency_code} from {competitor_name} it would cost you £{competitor_cost} at their " +
+            //     "rate of {target_currency_symbol}{competitor_rate}.",
             footer_text: "We take your privacy very seriously and promise never to share this data with third " +
                 "parties without your consent. Take a look at our " +
                 "<a href=\"http://help.travelmoneyclub.co.uk/privacy-policy\">privacy policy</a> for more information." +
@@ -64,6 +64,41 @@
                 "Please note that we always round the foreign currency to the lowest available denomination. The " +
                 "exchange rate shown is constantly updated with the latest market data so costs may go up and down.",
             capture_travel_information: true,
+
+            //savings message testing
+
+            // include_delivery_charge_in_calculations: false,
+
+            // legacy savings message
+            // saving_text: "1 If you buy {base_currency_symbol}{cost} of {target_currency_code} at " + 
+            // "our current rate of {target_currency_symbol}{rate} you would receive {target_currency_symbol}{target_amount}. " + 
+            // "If you bought the same amount of {target_currency_code} from {competitor_name} it would cost {base_currency_symbol}{competitor_cost}." + 
+            // "at their rate of {target_currency_symbol}{competitor_rate}. We offer a saving of {base_currency_symbol}{saving_amount}",
+
+            // Comparison savings message where delivery is not included
+            // saving_text_comparison_rate: "If you buy {base_currency_symbol}{cost} of {target_currency_code} at " + 
+            // "our current rate of {target_currency_symbol}{rate} you would receive {target_currency_symbol}{target_amount}. " + 
+            // "If you bought the same amount of {target_currency_code} from {competitor_name} it would cost {base_currency_symbol}{competitor_cost} " + 
+            // "at their rate of {target_currency_symbol}{competitor_rate}. We offer a saving of {base_currency_symbol}{saving_amount}",
+            
+            // Comparison default rate message where delivery is not included
+            // saving_text_default_rate: "If you buy {base_currency_symbol}{cost} of {target_currency_code} at " + 
+            // "our special rate of {target_currency_symbol}{rate} you would receive {target_currency_symbol}{target_amount}. " + 
+            // "If you bought the same amount of {target_currency_code} at our standard rate of {target_currency_symbol}{default_rate} " + 
+            // "it would cost {base_currency_symbol}{default_cost}. This is a saving of {base_currency_symbol}{saving_amount}",
+
+            // Comparison savings message where delivery is included
+            saving_text_comparison_rate: "Our total charge of {base_currency_symbol}{cost} includes {target_currency_code} {target_currency_symbol}{target_amount} " + 
+            "at {target_currency_symbol}{rate}, as well as delivery and handling. If you bought the same amount of {target_currency_code} from {competitor_name} at " + 
+            "{target_currency_symbol}{competitor_rate} it would cost {base_currency_symbol}{competitor_cost}, saving {base_currency_symbol}{saving_amount} (delivery charges may also apply).",
+
+            // Comparison default rate message where delivery is included
+            saving_text_default_rate: "If you buy {base_currency_symbol}{cost} of {target_currency_code} at our special rate of {target_currency_symbol}{rate} " + 
+            "you would receive {target_currency_symbol}{target_amount}. If you bought the same amount of {target_currency_code} " + 
+            "at our standard rate of {target_currency_symbol}{default_rate} it would cost {base_currency_symbol}{default_cost}. " + 
+            "You save {base_currency_symbol}{saving_amount}. The total charge includes delivery & handing fees.",
+
+
 
             // TMC Only
             include_delivery_charge_in_calculations: getURLParameter('include_delivery_charge_in_calculations') || false,
