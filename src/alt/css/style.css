@@ -1,7 +1,6 @@
-.tmc-widget {
-    font-family: sans-serif;
+.tmc-widget .rate-comparison-dropdown .flag-icon {
+    font-size: 1.5em !important;
 }
-
 .tmc-widget-inner::before,
 .tmc-widget .btn,
 .tmc-widget a.btn,
@@ -44,16 +43,16 @@ a:hover.tmc-widget-info {
 }
 /*Custom Widget Style*/
 .tmc-widget-inner.tmc-widget-inner-margin-bottom.tmc-widget-inner-no-border-top.rate-comparison-dropdown-container {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
     margin-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     padding-top:20px;
 }
 .tmc-widget-inner.tmc-widget-inner-no-border-top {
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 .btn-container a {
     background-color: #003768 !important;
@@ -84,12 +83,21 @@ a:hover.tmc-widget-info {
     display: none;
 }
 .lmd-our-rate .tmc-widget-inner {
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    box-shadow: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    /*     border-bottom-left-radius: 50px !important;
+        border-bottom-right-radius: 50px !important; */
 }
 .lmd-our-rate .row{border-bottom:solid 1px #eee;}
 .lmd-our-rate .btn-container a,.btn.btn-full-width {
     border-radius: 30px !important;
+}
+.lmd-our-rate .tmc-widget .media-middle {
+    vertical-align: middle;
+    font-size: 26px;
+    font-family: "Brownpro semibold", Sans-serif;
+    color: #003768;
 }
 .btn.btn-full-width{
     background-color: #003768 !important;
@@ -115,22 +123,35 @@ a:hover.tmc-widget-info {
 .rw-widget-input.rw-widget-picker.rw-widget-container {
     background-color: #f5f5f5;
     border-radius: 22px !important;
-    padding: 5px;
+    padding: 4px 20px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    height: 80px;
+    display: table;
 }
 .tmc-widget-section.tmc-widget-section-half-padding {
     font-family: 'Brownpro semibold';
     padding: 10px 30px 10px 30px;
     border: none;
 }
-.tmc-widget-section.tmc-widget-section-half-padding p {
-    margin-bottom: 10px;
+.media-body {
+    font-size: 20px;
+    color: #003768;
+    font-family: 'Brown pro';
 }
+.media-body small {
+    font-family: "Brownpro semibold", sans-serif;
+}
+/* .tmc-widget-section.tmc-widget-section-half-padding p {
+    margin-bottom: 10px;
+} */
 .tmc-widget-heading {
     margin-bottom: 0px !important;
 }
 #LiveRateBoard {
     width: 100%;
-    max-width: 550px;
+    max-width: 450px;
     margin: 0 auto;
     padding:20px;
 }
@@ -139,17 +160,25 @@ a:hover.tmc-widget-info {
     border-color: #1A4B77 !important;
 }
 .lmd-live-quote .tmc-widget-section-flex {
-    display: inherit !important;
     border: none;
+    width: 100%;
+    /*     max-width: 360px; */
+    margin: 0 auto;
+    justify-content: space-evenly;
+    padding: 0 36px;
 }
 .lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center {
     max-width: 100%;
 }
 .lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center {
-    max-width: 35%;
-    margin: 0 auto;
     border: none;
     text-align: center;
+    background-color: #eee;
+    padding: 15px 25px;
+    border-radius: 10px !important;
+}
+.lmd-live-quote .tmc-widget-col-padding:nth-child(1) {
+    margin-right: 10px;
 }
 .tmc-widget-currency-symbol {
     width: 100%;
@@ -162,22 +191,22 @@ a:hover.tmc-widget-info {
     padding: 4px;
     border-radius: 20px;
 }
-.lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center:nth-child(1):before {
+/*.lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center:nth-child(1):before {
     content: "What you’ll spend:";
     position: absolute;
     top: 0;
     left: 0;
-    right:0
+	right:0
 }
 .lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center:nth-child(2):before {
     content: "What you’ll receive:";
     position: absolute;
     top: 0;
     left: 0;
-    right:0;
-}
+	right:0;
+} */
 .lmd-live-quote .tmc-widget-currency-symbol{margin-right:-10px;}
-.lmd-live-quote .tmc-widget-heading{display:none;}
+/* .lmd-live-quote .tmc-widget-heading{display:none;} */
 .lmd-live-quote input[type="text"]{font-size: 18px;}
 .lmd-live-quote .tmc-widget-inner {
     border-radius: 30px;
@@ -190,8 +219,8 @@ a:hover.tmc-widget-info {
 .lmd-money-back .tmc-widget-col-padding.tmc-widget-col-flex-center.tmc-widget-col-border-right {
     background-color: #f5f5f5;
     padding: 4px;
-    max-width: 200px;
-    margin: 0 auto;
+    max-width: 165px;
+    /*     margin: 0 auto; */
     border-radius: 24px;
 }
 .lmd-money-back .tmc-widget-inner {
@@ -206,10 +235,11 @@ a:hover.tmc-widget-info {
     align-items: center;
     border-radius: 36px;
     max-width: 87%;
-    margin: 0 auto;
+    margin: 30px auto;
     margin-top: 30px;
 }
 .lmd-money-back .tmc-widget-lead-text {
+    color: #63788b;
     font-size: 15px;
     padding-top: 11px;
     font-family: 'Brownpro semibold';
@@ -222,6 +252,7 @@ a:hover.tmc-widget-info {
 @media(max-width:768px){
     .lmd-live-quote .tmc-widget-col-padding.tmc-widget-col-flex-center {
         max-width: 60%;
+        /* 	margin: 0 auto; */
     }
 }
 @media(max-width:580px){
@@ -256,56 +287,358 @@ a:hover.tmc-widget-info {
         padding-top: 10px;
     }
 }
-
-.lmd-our-rate .tmc-widget-section{
-    background-color:white !important;
-    color: #003768;
-    box-shadow:none !important;}
-
-
-.lmd-our-rate .tmc-widget-section-rates-list{
-    padding: 10px 45px 0px 45px;
+button.rw-btn.rw-btn-select:after {
+    content: '';
+    background-image: url(../img/down-arrow-color.png);
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    position: absolute;
+    right: -6px;
 }
-
-.lmd-our-rate .tmc-widget-call-out-text{
-    border: 2px solid #003768;
-    border-radius: 30px;
-    padding:10px;
+.rw-btn.rw-btn-select:focus, .rw-btn.rw-btn-select:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
 }
-
-.elementor-swiper-button{
-    background:white;
-    box-shadow:#ddd 2px 2px 10px;
-    border-radius:30px;
-    padding:14px;
+.rw-i-caret-down:before {
+    content: "\f078" !important;
 }
-
+.lmd-our-rate .tmc-widget-section {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    width: 100%;
+    max-width: 470px;
+    margin: 0 auto;
+}
+.lmd-our-rate .tmc-widget {
+    background-color: #fff !important;
+    box-shadow: 0 9px 30px -5px rgb(0 0 0 / 15%) !important;
+    border-radius: 50px;
+}
+.lmd-our-rate .tmc-widget-section.tmc-widget-section-half-padding {
+    padding-top: 10px !important;
+}
 .lmd-live-quote .tmc-widget-currency-symbol{
     color: #003768;
     font-size:24px;
     font-weight:bold;
-    padding-right:15px;
+    padding-right:10px;
 }
+.tmc-widget-section.tmc-widget-section-flex-v-center.tmc-widget-section-half-padding {
+    padding-bottom: 5px !important;
+    border-bottom: solid 1px #eee;
+}
+/* .tmc-widget-section.tmc-widget-section-no-padding.tmc-widget-section-flex {
+    margin-bottom: 35px !important;
+    margin-top: 35px !important;
+} */
+.tmc-widget-flag-icon {
+    width: 25px;
+    height: 25px;
+}
+.tmc-widget-currency-name,.tmc-widget-currency-value {
+    color: #63788b;
+}
+#LiveRateBoardContainer .tmc-widget-section-no-padding.tmc-widget-section-flex {
+    padding-top: 20px !important;
+    padding-bottom: 25px !important;
+    justify-content:space-evenly;
+}
+#InstantQuote .tmc-widget-section-no-padding.instant-quote-currency-fields-section {
+    margin-bottom: 0 !important;
+}
+.lmd-money-back .tmc-widget-col-padding.tmc-widget-col-flex-center.tmc-widget-col-border-right {
+    color: #63788b !important;
+}
+.tmc-widget-section-flex-v-center {
+    justify-content: space-evenly;
+    margin: 0 46px !important;
+    padding: 5px 0 !important;
+}
+.tmc-widget-flag-icon .flag-icon {
+    width: 35px;
+    height: 35px;
+    top: calc(50% - 18px);
+    left: calc(50% - 18px);
+}
+/* .lmd-our-rate .btn-container a {
+    background-color: transparent !important;
+} */
 
-.lmd-live-quote .tmc-widget-currency-symbol+ input{
+.lmd-our-rate .tmc-widget-section {
+    background-color: white !important;
     color: #003768;
-    font-size:24px;
+    box-shadow: none !important;
 }
-.lmd-live-quote  .tmc-widget-section-half-padding{
-    padding-bottom:30px;
+
+.lmd-our-rate .tmc-widget-section-rates-list {
+    padding: 10px 45px 0px 45px;
+}
+
+.lmd-our-rate .tmc-widget-call-out-text {
+    border: 2px solid #003768;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.elementor-swiper-button {
+    background: white;
+    box-shadow: #ddd 2px 2px 10px;
+    border-radius: 30px;
+    padding: 14px;
+}
+
+.lmd-live-quote .tmc-widget-currency-symbol + input {
+    color: #003768;
+    font-size: 24px;
+}
+
+.lmd-live-quote .tmc-widget-section-half-padding {
+    padding-bottom: 10px;
 
 }
 
-.lmd-live-quote .btn-full-width{
-    height:60px;
+.lmd-live-quote .btn-full-width {
+    height: 60px;
 }
-#LiveRateBoardContainer .btn-full-width,#RateComparison .btn-full-width,#InstantQuote .btn-full-width{color:transparent !important;}
-#LiveRateBoardContainer .btn-full-width:before, #RateComparison .btn-full-width:before,#InstantQuote .btn-full-width:before {
-    content: "GET A QUOTE";
+
+#LiveRateBoardContainer .btn-full-width, #RateComparison .btn-full-width, #InstantQuote .btn-full-width {
+    color: transparent !important;
+}
+
+/* #LiveRateBoardContainer .btn-full-width:before, #RateComparison .btn-full-width:before,#InstantQuote .btn-full-width:before {
+    content: "GET IT NOW!";
+	font-family:Brownpro semibold;
+	font-size:20px;
+    color: #fff;
+    position: absolute;
+} */
+#LiveRateBoardContainer .btn-full-width:before, #InstantQuote .btn-full-width:before {
+    content: "GET IT NOW!";
+    font-family: Brownpro semibold;
+    font-size: 20px;
     color: #fff;
     position: absolute;
 }
 
-#LiveRateBoardContainer .btn-full-width{
+#LiveRateBoardContainer .btn-full-width {
+    display: none !important;
+}
+
+/* Whole Website didn't use Elements Display None */
+.dp---none {
+    display: none !important;
+}
+
+/* Rates Weight Style */
+#RateComparison #RateComparisonContainer .tmc-widget-section {
+    padding-bottom: 25px !important;
+    font-family: "Brownpro semibold", Sans-serif;
+}
+
+.lmd-testimonial-p .elementor-widget-container {
+    max-width: 430px;
+}
+
+.lmd_how_much_heading h1 {
+    max-width: 387px;
+}
+
+.lmd_forgn_cur_heading h2 {
+    max-width: 1089px;
+    margin: 0 auto !important;
+}
+
+.lmd-icon-box p {
+    max-width: 500px;
+}
+
+.lmd_live-quote_heading h1 {
+    max-width: 300px;
+}
+
+@media screen and (max-width: 1350px) and (min-width: 1200px) {
+    .lmd-instant-quote .elementor-widget-container {
+        margin: -26% 0% 0% 0% !important;
+    }
+}
+
+@media screen and (max-width: 1206px) and (min-width: 1024px) {
+    .lmd-top_btns .elementor-size-sm {
+        padding: 16px !important;
+    }
+
+    .lmd-hide-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 512px) {
+    #RateComparison #RateComparisonContainer .tmc-widget-section {
+        padding-bottom: 25px !important;
+
+    }
+}
+
+.rw-popup-container {
+    position: absolute !important;
+}
+
+.lmd-step-p .elementor-image-box-description {
+    max-width: 250px;
+    margin: 0 auto !important;
+}
+
+.lmd-quote-p p {
+    max-width: 405px;
+}
+
+.lmd_top_heading h1 {
+    max-width: 424px;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 860px) {
+    .lmd-btn-col {
+        width: 24% !important;
+    }
+
+    .lmd-burgr-col {
+        width: 26% !important;
+    }
+
+    .lmd-instant-quote .elementor-widget-container {
+        margin-top: -20% !important;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .lmd-top-p p {
+        max-width: 100% !important;
+    }
+
+    .lmd-our-rate #RateComparison {
+        max-width: 570px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .lmd_live-quote_heading h1, .lmd_how_much_heading h1 {
+        text-align: center;
+        padding-top: 75px !important;
+    }
+
+    .lmd_top_heading h1 br {
+        display: none;
+    }
+
+    .lmd-step-p .elementor-image-box-description {
+        max-width: 100% !important;
+        margin: inherit !important;
+    }
+
+    .lmd-testimonial-p .elementor-widget-container, .lmd-top-p p, .lmd-quote-p p, .lmd_top_heading h1, .lmd_how_much_heading h1, .lmd_forgn_cur_heading h2, .lmd-icon-box p, .lmd_live-quote_heading h1 {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .lmd_mobile_view {
+        gap: 0;
+    }
+
+    .lmd_mobile_view > .column-50-accordion ul {
+        margin-bottom: 0;
+    }
+
+    .elementor-7 .elementor-element.elementor-element-512703c > .elementor-widget-container {
+        margin: -30% 0% 0% 0% !important;
+    }
+
+    #InstantQuote .instant-quote-currency-fields-section {
+        flex-direction: column !important;
+    }
+
+
+    #InstantQuote .instant-quote-currency-fields-section div {
+        margin-bottom: 10px;
+    }
+
+    #LiveRateBoard .tmc-widget-heading {
+        font-size: 1rem !important;
+    }
+
+    .tmc-widget-section-flex-v-center {
+        margin: 0 19px !important;
+    }
+
+    .lmd-money-back .tmc-widget-section:first-child {
+        max-width: 90%;
+    }
+}
+
+.rw-widget-input.rw-widget-picker.rw-widget-container {
+    max-width: 435px;
+}
+
+#LiveRateBoard .tmc-widget-heading {
+    font-size: 1.8rem;
+}
+
+#RateComparison .btn-full-width:before {
+    content: 'ORDER NOW!';
+    font-family: Brownpro semibold;
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+}
+
+/**/
+.lmd-top-p p {
+    max-width: 480px;
+}
+
+.lmd-heading-color .elementor-icon-box-description {
+    max-width: 286px;
+    margin: 0 auto !important;
+}
+
+#lmd_content_width .elementor-icon-box-description {
+    max-width: 249px;
+}
+
+#RateComparisonContainer .btn-container {
+    margin-top: 20px;
+}
+
+#RateComparisonContainer .tmc-widget-section .col-6 {
+    padding: 0;
+}
+
+.lmd_btn-full-width, #InstantQuote .btn-full-width:before {
+    background-color: #003768 !important;
+    font-family: "brown pro", Sans-serif;
+    color: #fff;
+    font-size: 20px !important;
+    display: block;
+    text-align: center;
+    padding: 13px 0;
+    border-radius: 30px;
+}
+
+#InstantQuote .btn-full-width:before {
+    content: 'GET IT NOW';
+}
+
+#InstantQuote .btn-full-width:hover  {
+    opacity: revert;
+}
+
+#instant-quote-container .btn-full-width {
     /*display: none !important;*/
+}
+
+.lmd_btn-full-width:hover, .lmd_btn-full-width:focus {
+    color: #fff;
 }

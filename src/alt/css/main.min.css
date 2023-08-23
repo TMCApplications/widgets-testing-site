@@ -6,7 +6,7 @@
     margin: 0;
     outline: 0;
     padding: 0;
-    vertical-align: baseline
+    vertical-align: baseline;
 }
 
 html {
@@ -333,7 +333,7 @@ h1,h2,h3,h4,h5,h6 {
 .entry-content h3,h3 {
     color: #808285;
     font-size: 1.5em;
-    line-height: 1.4
+    line-height: 1.4;
 }
 
 .entry-content h4,h4 {
@@ -654,7 +654,7 @@ img {
 }
 
 .entry-content h1,.entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6 {
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 p {
