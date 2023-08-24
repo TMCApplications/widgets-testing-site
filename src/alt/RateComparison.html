@@ -151,12 +151,9 @@
                 selector: "#" + rateComparisonId,
                 api_url: apiUrl,
                 button_url: 'javascript:void(0);',
-                button_text: 'Buy now',
-                poll_frequency:  60000,
+                results_message: 'Save up to ${saving} right now when exchanging ${comparison_amount}'
             };
-            SPENDOLOGY.RateComparison.new(rateComparisonOptions).render({
-                currencies: []
-            });
+            SPENDOLOGY.RateComparison.new(rateComparisonOptions).render({});
         }
     });
 </script>
